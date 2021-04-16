@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    /*
+     Agradecimento "Press Start" - https://www.youtube.com/channel/UCe45-2uomTfrnGZwJcATeUA Video - https://www.youtube.com/watch?v=GTxiCzvYNOc
+       Codigo de autoria Press Start com pequenas mudancas para melhor adaptacao em meu jogo
+     */
     public GameObject followObject;
     public Vector2 followOffset;
     public float speed = 3f;
@@ -18,7 +22,6 @@ public class CameraFollow : MonoBehaviour
         threshold = calculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -52,6 +55,4 @@ public class CameraFollow : MonoBehaviour
         Vector2 border = calculateThreshold();
         Gizmos.DrawWireCube(transform.position, new Vector3(border.x * 2, border.y * 2, 1));
     }
-
-
 }

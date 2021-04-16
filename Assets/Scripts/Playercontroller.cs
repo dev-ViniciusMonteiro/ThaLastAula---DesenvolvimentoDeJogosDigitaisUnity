@@ -6,21 +6,27 @@ public class Playercontroller : MonoBehaviour
 {
     private int ParamSpeed = Animator.StringToHash("speed");
     private int ParamJump = Animator.StringToHash("jump");
-    private int PramamChouch = Animator.StringToHash("crouch");
+    private int PramamChouch = Animator.StringToHash("crouch");//transforma as strings em int para melhor performace 
 
-    private CapsuleCollider2D _capsuleColider;
+    private CapsuleCollider2D _capsuleColider;//para colisao do contato com o solo
+
+    //andar
+    public float speedForce = 12.0f;//forca andar
+    private Vector2 _moviment = Vector2.zero; //recebe movimento do eixo X no codigo
 
 
-    public float speedForce = 12.0f;
+    //no chao
+    public bool isGrounded = false; //se esta no chao
 
-    public bool isGrounded = false;
-    public Vector3 offSet = Vector2.zero;
-    public float radios = 10.0f;
-    public LayerMask layer;
-    public float JumpForce = 5f;
+    //agachar
+    public Vector3 offSet = Vector2.zero;//centro do criculo de contato com o chao
+    public float radios = 10.0f;//raio do circulo de contato ao chao
+    public LayerMask layer;//com o que ira ter contato
+    public float JumpForce = 5f;//forca do pulo
+    public bool isCrounch = false;//se esta de pe ou agachado
+    public bool currentCrounch = false;//se esta apertando para agachar ou nao
 
-    public bool isCrounch = false;
-    public bool currentCrounch = false;
+   //sets de colisao com o chao de pe e agachado
     public Vector2 up_offset = new Vector2(0.002437592f, -0.5458291f);
     public Vector2 up_size = new Vector2(1.345448f, 1.345448f);
     public Vector2 down_offset = new Vector2(0f, -0.620397f);
@@ -28,13 +34,17 @@ public class Playercontroller : MonoBehaviour
 
 
 
-    public Vector2 _moviment = Vector2.zero;
+    public int _cristal = 0;
+
+
+
+
     private Rigidbody2D _body = null;
     private Animator _animation = null;
-    private SpriteRenderer _render = null;
+    private SpriteRenderer _render = null;//usado para flip X personagem direita e esquerda
 
 
-    public Vector2 velocity;
+   
 
     // Despertado é chamado quando a instância do script for carregada
     private void Awake()
@@ -57,72 +67,79 @@ public class Playercontroller : MonoBehaviour
     void Update()
     {
 
+        //andar
+        _moviment = new Vector2(Input.GetAxisRaw("Horizontal") * speedForce, 0.0f);//recebe <- -1 ou 0 ou +1 -> * Forca andar , DeltaTime = 0 (intervalo em segundos desde o último quadro até o atual)
 
-        _moviment = new Vector2(Input.GetAxisRaw("Horizontal") * speedForce, 0.0f);
-
-        if (_moviment.sqrMagnitude > 0.1f)
+        if (_moviment.sqrMagnitude > 0.1f)//se esta andando 
         {
-            bool xRight = Input.GetAxis("Horizontal") > 0;
-            if (_render.flipX == xRight)
-                _render.flipX = !xRight;
+            bool xRight = Input.GetAxis("Horizontal") > 0;//Ve lado que esta andando -- false vai pra esquerda(-1)
+            if (_render.flipX == xRight) //se ele esta para um lado(<-false ou true->) e andar pra outro
+                _render.flipX = !xRight;//inverte o FLip X do "Sprite Render"
         }
 
-        currentCrounch = Input.GetAxisRaw("Vertical") < 0f;
+        float speed = Mathf.Abs(_body.velocity.x);//verefica se esta se movendo para animacao com numero absoluto
+        _animation.SetFloat(ParamSpeed, speed);//paramspeed = stringhash
+        //+ FixedUpdate()
 
-        if (isCrounch != currentCrounch )
+
+        //agachar
+        currentCrounch = Input.GetAxisRaw("Vertical") < 0f;//se apertar pra baixo = true
+        //isCrounch se setiver agachado ou levantado
+        if (isCrounch != currentCrounch )//se tiver agachando e nao estiver agachado ou se estiver levantando e estiver agachado
         {
-            isCrounch = currentCrounch;
-            if (isCrounch)
+            isCrounch = currentCrounch;//coloca como agachado ou de pe
+            if (isCrounch)//se for agachar
             {
-                _capsuleColider.offset = down_offset;
+                _capsuleColider.offset = down_offset;//colisao do circulo agachado
                 _capsuleColider.size = down_size;
             }
-            else
+            else//se for levantar
             {
-                _capsuleColider.offset = up_offset;
+                _capsuleColider.offset = up_offset;//colisao do circulo de pe
                 _capsuleColider.size = up_size;
             }
 
-            _animation.SetBool(PramamChouch, isCrounch);
+            _animation.SetBool(PramamChouch, isCrounch);//animacao de agachar
 
         }
-        /**/
 
 
-
-
-            if (Input.GetButtonDown("Jump")&&isGrounded)
+        //pular
+        if (Input.GetButtonDown("Jump") && isGrounded && !currentCrounch)//se apertar pra pular, estiver no ar e nao estiver agachando
         {
-            _body.AddForce(Vector2.up* JumpForce, ForceMode2D.Impulse);
+            _body.AddForce(Vector2.up* JumpForce, ForceMode2D.Impulse);//adiciona forca no Y usando jumpForce e impulso
         }
 
-        _animation.SetBool(ParamJump, isGrounded);
-
-        float speed = Mathf.Abs(_body.velocity.x);
-        _animation.SetFloat(ParamSpeed, speed);
+        _animation.SetBool(ParamJump, isGrounded);//animacao pular stringhash
 
     }
 
     private void FixedUpdate()
     {
-        velocity = _body.velocity;
 
-        isGrounded = Physics2D.OverlapCircle((this.transform.position + offSet), radios, layer);
+        //pular e agachar
+        isGrounded = Physics2D.OverlapCircle((this.transform.position + offSet), radios, layer);//se a esfera estiver em contato com a layer(ground) = true
 
-        if (_moviment.sqrMagnitude > 0.1f && !currentCrounch)
+        //andar
+        if (_moviment.sqrMagnitude > 0.1f && !currentCrounch)//se tiver movimento E nao estiver agachado (tem rastro de massa so para se agachar)
         {
-
-            _body.AddForce(_moviment, ForceMode2D.Force);
-
+            _body.AddForce(_moviment, ForceMode2D.Force);//adiciona forca no corpo com movimento e Adicione uma força ao Rigidbody2D, usando sua massa.
+        }
+        if (currentCrounch && isGrounded)//se agachar e nao estiver no ar para de andar
+        {
+            _body.velocity = Vector2.zero;//para a velocidade do corpo
         }
     }
 
     // Implemente OnDrawGizmosSelected se desejar desenhar utensílios somente se o objeto for selecionado
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()//desenha uma esfera no personagem para ver se esta pulando ou nao
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere((this.transform.position + offSet), radios);
+        Gizmos.color = Color.red;//cor vermelha
+        Gizmos.DrawWireSphere((this.transform.position + offSet), radios);//desenha a esfera no centro do personagem + offSet(pra por bem no pe) com o raio escolhido
     }
 
-
+    public void AddCristal()
+    {
+        _cristal++;
+    }
 }
