@@ -9,6 +9,7 @@ public class Playercontroller : MonoBehaviour
     private int PramamChouch = Animator.StringToHash("crouch");//transforma as strings em int para melhor performace 
 
     private CapsuleCollider2D _capsuleColider;//para colisao do contato com o solo
+    private bool _killPlayer = false;
 
     //andar
     public float speedForce = 12.0f;//forca andar
@@ -121,7 +122,7 @@ public class Playercontroller : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle((this.transform.position + offSet), radios, layer);//se a esfera estiver em contato com a layer(ground) = true
 
         //andar
-        if (_moviment.sqrMagnitude > 0.1f && !currentCrounch)//se tiver movimento E nao estiver agachado (tem rastro de massa so para se agachar)
+        if (_moviment.sqrMagnitude > 0.1f && !currentCrounch && !_killPlayer)//se tiver movimento E nao estiver agachado (tem rastro de massa so para se agachar) E nao pode estar morto
         {
             _body.AddForce(_moviment, ForceMode2D.Force);//adiciona forca no corpo com movimento e Adicione uma força ao Rigidbody2D, usando sua massa.
         }
@@ -141,5 +142,18 @@ public class Playercontroller : MonoBehaviour
     public void AddCristal()
     {
         _cristal++;
+    }
+
+    public void Kill()//Animacao de player morrer
+    {
+        _render.color = Color.red;
+        _body.velocity = Vector2.zero;
+        _killPlayer = true;
+    }
+    public void NextFase()
+    {
+        _render.color = Color.blue;
+        _body.velocity = Vector2.zero;
+        _killPlayer = true;
     }
 }
