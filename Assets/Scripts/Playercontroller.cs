@@ -19,7 +19,7 @@ public class Playercontroller : MonoBehaviour
     //no chao
     public bool isGrounded = false; //se esta no chao
 
-    //agachar
+    //agachar e pular
     public Vector3 offSet = Vector2.zero;//centro do criculo de contato com o chao
     public float radios = 10.0f;//raio do circulo de contato ao chao
     public LayerMask layer;//com o que ira ter contato
@@ -40,9 +40,12 @@ public class Playercontroller : MonoBehaviour
 
 
 
-    private Rigidbody2D _body = null;
+    private Rigidbody2D _body = null;//fisica
     private Animator _animation = null;
     private SpriteRenderer _render = null;//usado para flip X personagem direita e esquerda
+
+   
+
 
 
    

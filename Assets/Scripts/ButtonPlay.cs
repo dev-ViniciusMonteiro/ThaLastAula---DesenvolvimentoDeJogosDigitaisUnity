@@ -7,6 +7,10 @@ public class ButtonPlay : MonoBehaviour
 {
     public void playGame()
     {
-        SceneManager.LoadScene("GameApresentation");
+        SceneManager.LoadScene("Fase1");
+    }
+    public void tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 }
