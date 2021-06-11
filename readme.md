@@ -21,14 +21,36 @@ Para passar de fase o jogador terá que encontrar 3 diamantes espalhados pela fa
 Mecânica: (Ideia inicial)
 Mecânica de jogo baseado no Mário com movimentação para frente, para cima e agachar. Sem matar desviando de obstáculos, inimigos e objetos. Apenas uma vida e se morrer retornara ao início do game. Jogo com puzzle baseado em captura de objetos para a finalização do game, caso não capture todos os objetos retrocede ao início do jogo novamente.
 
+--------------------------------------------------------------------------------------------------------------
+Parte 2:
 
+- Fundo:
+    BGcolletor.cs
+    BGspawner.cs
 
+- CameraFollow.cs:
+     adesao de LateUpdate()
+
+-Cena tutorial
+    Criacao do tutorial inicial
+
+-som
+    Adesao de musica de fundo.
+    Persistir musica em todas cenas Songpersistes.cs
+    Script som de captura de diamantes e mudanca de fase(SfxManager.cs) - https://dillonbecker.itch.io/sdap
+-Criado a primeira fase
+-Criado interface para capturar diamantes CanvasCristal.cs
+-Criado inicio
+-Adesao de diamantes para coleta na interface do jogador
+-Criado fase bonus(cave)
+-criado Script para ir a faze bonus(cave)(novo diamante) ButonPlay.cs
 
 
 
 Agradecimentos:
 -Aula de Design de Jogos Digitais – Ministrada por Cesar Silva – UniFAJ 7 semestre – Ciência da Computação
 - Press Start – Youtube - https://www.youtube.com/channel/UCe45-2uomTfrnGZwJcATeUA 
+- Agradecimento - ｎｉｇｈｔｓ ｉｎ ｃｌｅａｒ - ＬＯＦＩ - Leonardo Aparecido Dos Santos(5 Semestre Ciencia da Cumputacao UNIFAJ-2021) Musica tema. 
 Grupo:
 Vinicius Monteiro 11820741
 Gustavo Carlini 11819564
