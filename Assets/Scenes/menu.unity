@@ -340,5 +340,25 @@ PrefabInstance:
       propertyPath: m_Text
       value: Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 7685439881270930808, guid: bad56499c88d9e148b9b6d4bf6ffa7cd, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685439881270930808, guid: bad56499c88d9e148b9b6d4bf6ffa7cd, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685439881270930808, guid: bad56499c88d9e148b9b6d4bf6ffa7cd, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685439881270930809, guid: bad56499c88d9e148b9b6d4bf6ffa7cd, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685439881270930809, guid: bad56499c88d9e148b9b6d4bf6ffa7cd, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bad56499c88d9e148b9b6d4bf6ffa7cd, type: 3}

@@ -3781,7 +3781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3618995137796078007, guid: 7f290991843e3974e980126a61277363, type: 3}
       propertyPath: _cristal
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f290991843e3974e980126a61277363, type: 3}
