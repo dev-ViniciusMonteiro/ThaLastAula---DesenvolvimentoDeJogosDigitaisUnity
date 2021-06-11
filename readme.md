@@ -38,11 +38,16 @@ Parte 2:
     Adesao de musica de fundo.
     Persistir musica em todas cenas Songpersistes.cs
     Script som de captura de diamantes e mudanca de fase(SfxManager.cs) 
+
 -Criado a primeira fase
+
 -Criado interface para capturar diamantes CanvasCristal.cs
+
 -Criado inicio
--Adesao de diamantes para coleta na interface do jogador
+
+
 -Criado fase bonus(cave)
+
 -criado Script para ir a faze bonus(cave)(novo diamante) ButonPlay.cs
 
 
