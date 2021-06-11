@@ -25,6 +25,7 @@ Mecânica de jogo baseado no Mário com movimentação para frente, para cima e 
 
 
 
+
 Agradecimentos:
 -Aula de Design de Jogos Digitais – Ministrada por Cesar Silva – UniFAJ 7 semestre – Ciência da Computação
 - Press Start – Youtube - https://www.youtube.com/channel/UCe45-2uomTfrnGZwJcATeUA 
@@ -32,3 +33,4 @@ Grupo:
 Vinicius Monteiro 11820741
 Gustavo Carlini 11819564
 Vinicius Facci 11829501
+

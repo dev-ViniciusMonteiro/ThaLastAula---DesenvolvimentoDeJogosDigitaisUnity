@@ -22,8 +22,12 @@ public class CameraFollow : MonoBehaviour
         threshold = calculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();
     }
+
+
+
+    //https://docs.unity3d.com/ScriptReference/MonoBehaviour.LateUpdate.html - porque usar LateUpdate
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         Vector2 follow = followObject.transform.position;
         float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * follow.x);
