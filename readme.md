@@ -46,12 +46,13 @@ Parte 2:
 -criado Script para ir a faze bonus(cave)(novo diamante) ButonPlay.cs
 
 
-
+--------------------------------------------------------------------------------------------------------------------
 Agradecimentos:
 -Aula de Design de Jogos Digitais – Ministrada por Cesar Silva – UniFAJ 7 semestre – Ciência da Computação
 - Press Start – Youtube - https://www.youtube.com/channel/UCe45-2uomTfrnGZwJcATeUA 
 - ｎｉｇｈｔｓ ｉｎ ｃｌｅａｒ - ＬＯＦＩ - Leonardo Aparecido Dos Santos(5 Semestre Ciencia da Cumputacao UNIFAJ-2021) Musica tema. 
 - Som captura diamante - https://dillonbecker.itch.io/sdap
+------------------------------------------------------------------------------------------------------------------------
 Grupo:
 Vinicius Monteiro 11820741
 Gustavo Carlini 11819564
