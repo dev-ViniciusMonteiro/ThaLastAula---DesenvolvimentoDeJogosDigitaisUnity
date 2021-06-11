@@ -37,7 +37,7 @@ Parte 2:
 -som
     Adesao de musica de fundo.
     Persistir musica em todas cenas Songpersistes.cs
-    Script som de captura de diamantes e mudanca de fase(SfxManager.cs) - https://dillonbecker.itch.io/sdap
+    Script som de captura de diamantes e mudanca de fase(SfxManager.cs) 
 -Criado a primeira fase
 -Criado interface para capturar diamantes CanvasCristal.cs
 -Criado inicio
@@ -50,7 +50,8 @@ Parte 2:
 Agradecimentos:
 -Aula de Design de Jogos Digitais – Ministrada por Cesar Silva – UniFAJ 7 semestre – Ciência da Computação
 - Press Start – Youtube - https://www.youtube.com/channel/UCe45-2uomTfrnGZwJcATeUA 
-- Agradecimento - ｎｉｇｈｔｓ ｉｎ ｃｌｅａｒ - ＬＯＦＩ - Leonardo Aparecido Dos Santos(5 Semestre Ciencia da Cumputacao UNIFAJ-2021) Musica tema. 
+- ｎｉｇｈｔｓ ｉｎ ｃｌｅａｒ - ＬＯＦＩ - Leonardo Aparecido Dos Santos(5 Semestre Ciencia da Cumputacao UNIFAJ-2021) Musica tema. 
+- Som captura diamante - https://dillonbecker.itch.io/sdap
 Grupo:
 Vinicius Monteiro 11820741
 Gustavo Carlini 11819564
